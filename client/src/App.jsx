@@ -21,15 +21,12 @@ const App = () => {
 	async function fetchAllMoments() {
 		try {
 			const token = localStorage.getItem('token')
-			const moments = axios({
-				// Endpoint to send files
+			const moments = await axios({
 				url: process.env.REACT_APP_P_BASE_URL + 'moment',
 				method: 'get',
 				headers: {
-					// Add any auth token here
 					Authorization: 'Bearer ' + token,
 				},
-				// Attaching the form data
 			})
 
 			console.log(moments)
@@ -43,12 +40,13 @@ const App = () => {
 	})
 
 	return (
-		<div className='ag-theme-alpine' style={{ height: 400, width: 600 }}>
-			<AgGridReact
-				rowData={rowData}
-				columnDefs={columnDefs}
-			></AgGridReact>
-		</div>
+		// <div className='ag-theme-alpine' style={{ height: 400, width: 600 }}>
+		// 	<AgGridReact
+		// 		rowData={rowData}
+		// 		columnDefs={columnDefs}
+		// 	></AgGridReact>
+		// </div>
+		<h1>Home Page</h1>
 	)
 }
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -10,10 +10,12 @@ import AccountCircleOutLined from '@mui/icons-material/AccountCircleOutlined'
 
 import Navigator from '../Navigator'
 import NavigatorOptions from '../Navigator/NavigationOptions'
+import { useNavigate } from 'react-router-dom'
 
 function TopBar() {
 	const [drawerState, setDrawerState] = useState(false)
 	const [anchorEl, setAnchorEl] = useState(null)
+	const navigate = useNavigate()
 
 	const open = Boolean(anchorEl)
 
@@ -21,7 +23,9 @@ function TopBar() {
 		setAnchorEl(event.currentTarget)
 	}
 	const handlerProfileClose = () => {
+		localStorage.removeItem('token')
 		setAnchorEl(null)
+		navigate('/sign-in')
 	}
 
 	function handleDrawerToggle() {
